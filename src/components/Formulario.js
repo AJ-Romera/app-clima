@@ -6,6 +6,8 @@ function Formulario() {
         ciudad: '',
         pais: '',
     });
+    // State de error
+    const [error, setError] = useState(false);
 
     // Destructuring; obtener ciudad y país
     const { ciudad, pais } = busqueda;
@@ -19,8 +21,28 @@ function Formulario() {
         });
     };
 
+    // Cuando el usuario hace submit al formulario
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // Validar
+        if (ciudad.trim() === '' || pais.trim() === '') {
+            setError(true);
+            return;
+        }
+
+        setError(false);
+
+        // Pasarlo al componente principal
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
+            {error ? (
+                <p className='red darken-4 error'>
+                    Por favor, rellene todos los campos
+                </p>
+            ) : null}
             <div className='input-field col s12'>
                 <input
                     type='text'
@@ -49,6 +71,15 @@ function Formulario() {
                     <option value='PE'>Perú</option>
                 </select>
                 <label htmlFor='pais'>País: </label>
+            </div>
+
+            <div className='input-field col s12'>
+                <button
+                    type='submit'
+                    className='waves-effect waves-light btn-large btn-block yellow accent-4 col s10 offset-s1'
+                >
+                    Buscar Clima
+                </button>
             </div>
         </form>
     );
