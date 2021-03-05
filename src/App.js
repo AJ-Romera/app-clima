@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Formulario from './components/Formulario';
 import Header from './components/Header';
 
 function App() {
+    // State del formulario
+    const [busqueda, setBusqueda] = useState({
+        ciudad: '',
+        pais: '',
+    });
+    const [consultar, setConsultar] = useState(false);
+
+    // Destructuring; obtener ciudad y país
+    const { ciudad, pais } = busqueda;
+
+    useEffect(() => {
+        const consultarAPI = (async) => {};
+        consultarAPI();
+    }, [consultar]);
+
     return (
         <>
             <Header titulo='App Clima' />
@@ -10,7 +25,11 @@ function App() {
                 <div className='container'>
                     <div className='row'>
                         <div className='col m6 s12'>
-                            <Formulario />
+                            <Formulario
+                                busqueda={busqueda}
+                                setBusqueda={setBusqueda}
+                                setConsultar={setConsultar}
+                            />
                         </div>
                         <div className='col m6 s12'>2</div>
                     </div>
