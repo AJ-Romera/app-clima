@@ -31,6 +31,9 @@ function Clima({ resultado }) {
         case 'broken clouds':
             weatherDesc = 'Nublado';
             break;
+        case 'light rain':
+            weatherDesc = 'Lluvia Ligera';
+            break;
         case 'shower rain':
             weatherDesc = 'Chubascos Dispersos';
             break;
