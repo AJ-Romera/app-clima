@@ -15,27 +15,66 @@ function Clima({ resultado }) {
     const iconId = weather[0].icon;
     const iconUrl = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
 
+    // Descripción del tiempo (Ejemplo: Soleado)
+    let weatherDesc = weather[0].description;
+
+    switch (weatherDesc) {
+        case 'clear sky':
+            weatherDesc = 'Cielo Despejado';
+            break;
+        case 'few clouds':
+            weatherDesc = 'Parcialmente Nublado';
+            break;
+        case 'scattered clouds':
+            weatherDesc = 'Nubes Dispersas';
+            break;
+        case 'broken clouds':
+            weatherDesc = 'Nublado';
+            break;
+        case 'shower rain':
+            weatherDesc = 'Chubascos Dispersos';
+            break;
+        case 'rain':
+            weatherDesc = 'Chubascos';
+            break;
+        case 'thunderstorm':
+            weatherDesc = 'Tormenta';
+            break;
+        case 'snow':
+            weatherDesc = 'Nieve';
+            break;
+        case 'mist':
+            weatherDesc = 'Niebla';
+            break;
+
+        default:
+            weatherDesc = 'Error, inténtelo de nuevo más tarde';
+            break;
+    }
+
     return (
         <div className='card-panel white col s12'>
             <div className='black-text'>
                 <h2>El clima de {name} es: </h2>
                 <p className='temperatura'>
-                    {parseFloat(main.temp - kelvin, 10).toFixed(2)}
+                    {parseInt(main.temp - kelvin, 10)}
                     <span> &#x2103; </span>
                 </p>
-                <p>
-                    Temperatura Máxima:{' '}
-                    {parseFloat(main.temp_max - kelvin, 10).toFixed(2)}
+                <p className='temp-max-min'>
+                    Máx: {parseInt(main.temp_max - kelvin, 10)}
+                    <span> &#x2103; </span>
+                    {'/ '}
+                    Mín: {parseInt(main.temp_min - kelvin, 10)}
                     <span> &#x2103; </span>
                 </p>
-                <p>
-                    Temperatura Mínima:{' '}
-                    {parseFloat(main.temp_min - kelvin, 10).toFixed(2)}
-                    <span> &#x2103; </span>
+                <p className='tiempo-p'>
+                    <img
+                        className='tiempo-img'
+                        src={iconUrl}
+                        alt='icono-del-tiempo'
+                    />
                 </p>
-                <p className='icon'>
-                    <img src={iconUrl} alt='weather-icon' />
-                </p>
+                <p className='tiempo-desc'>{weatherDesc}</p>
             </div>
         </div>
     );

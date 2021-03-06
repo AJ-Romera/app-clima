@@ -55,10 +55,30 @@ input[type='text']:not(.browser-default):focus:not([readonly]) + label {
 }
 .temperatura {
     font-size: 4rem !important;
+    margin-bottom: 0;
+    margin-top: 30px;
 }
 .temperatura span {
     font-size: 2rem !important;
     vertical-align: super;
+}
+.temp-max-min {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.tiempo-p {
+    height: 150px;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+.tiempo-img {
+    width: 200px;
+    height: 200px;
+}
+.tiempo-desc {
+    margin-top: 0;
+    font-size: 2.5rem !important;
+    margin-bottom: 30px;
 }
 
 .btn-block {
