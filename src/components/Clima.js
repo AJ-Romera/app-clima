@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Clima({ resultado }) {
     // Extraer los valores
@@ -82,5 +83,9 @@ function Clima({ resultado }) {
         </div>
     );
 }
+
+Clima.propTypes = {
+    resultado: PropTypes.object.isRequired,
+};
 
 export default Clima;

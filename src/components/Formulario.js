@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Error from './Error';
+import PropTypes from 'prop-types';
 
 function Formulario({ busqueda, setBusqueda, setConsultar }) {
     // State de error
@@ -79,5 +80,11 @@ function Formulario({ busqueda, setBusqueda, setConsultar }) {
         </form>
     );
 }
+
+Formulario.propTypes = {
+    busqueda: PropTypes.object.isRequired,
+    setBusqueda: PropTypes.func.isRequired,
+    setConsultar: PropTypes.func.isRequired,
+};
 
 export default Formulario;
