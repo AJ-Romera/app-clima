@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Formulario from './components/Formulario';
 import Header from './components/Header';
 import Clima from './components/Clima';
+import Error from './components/Error';
 
 function App() {
     // State del formulario
@@ -11,6 +12,7 @@ function App() {
     });
     const [consultar, setConsultar] = useState(false);
     const [resultado, setResultado] = useState({});
+    const [error, setError] = useState(false);
 
     // Destructuring; obtener ciudad y país
     const { ciudad, pais } = busqueda;
@@ -26,10 +28,25 @@ function App() {
 
                 setResultado(resultado);
                 setConsultar(false);
+
+                // Detecta si encuentra la ciudad o país correctamente (cod:200) o no (cod:404)
+                if (resultado.cod === '404') {
+                    setError(true);
+                } else {
+                    setError(false);
+                }
             }
         };
         consultarAPI();
     }, [consultar]);
+
+    // Carga Condicional de Componentes
+    let componente;
+    if (error) {
+        componente = <Error mensaje='No hay resultados' />;
+    } else {
+        componente = <Clima resultado={resultado} />;
+    }
 
     return (
         <>
@@ -45,7 +62,8 @@ function App() {
                             />
                         </div>
                         <div className='col m6 s12'>
-                            <Clima resultado={resultado} />
+                            {componente}
+                            {/* <Clima resultado={resultado} /> */}
                         </div>
                     </div>
                 </div>

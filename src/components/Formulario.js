@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Error from './Error';
 
 function Formulario({ busqueda, setBusqueda, setConsultar }) {
     // State de error
@@ -35,9 +36,7 @@ function Formulario({ busqueda, setBusqueda, setConsultar }) {
     return (
         <form onSubmit={handleSubmit}>
             {error ? (
-                <p className='red darken-4 error'>
-                    Por favor, rellene todos los campos
-                </p>
+                <Error mensaje='Por favor, rellene todos los campos' />
             ) : null}
             <div className='input-field col s12'>
                 <input
