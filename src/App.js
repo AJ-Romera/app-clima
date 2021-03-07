@@ -21,7 +21,7 @@ function App() {
         const consultarAPI = async () => {
             if (consultar) {
                 const appId = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-                const url = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
 
                 const respuesta = await fetch(url);
                 const resultado = await respuesta.json();
@@ -62,10 +62,7 @@ function App() {
                                 setConsultar={setConsultar}
                             />
                         </div>
-                        <div className='col m6 s12'>
-                            {componente}
-                            {/* <Clima resultado={resultado} /> */}
-                        </div>
+                        <div className='col m6 s12'>{componente}</div>
                     </div>
                 </div>
             </div>
