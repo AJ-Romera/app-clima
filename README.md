@@ -21,7 +21,7 @@ https://clima-con-react.netlify.app/
 -   React useEffect Hook - Para hacer una consulta a la API, guardar los datos en un state y validar que no haya error
 -   JavaScript ES6+ - Últimos estándares de JavaScript
 -   Variables de Entorno - Guardo la API key en un archivo .env (oculto) como variable de entorno
--   [CSS Normalize](http://getskeleton.com/) - Un framework ligero que ayuda con el responsive, los anchos, grid, botones, etc. Es como una versión ligera de Bootstrap.
+-   [Materialize CSS](https://materializecss.com/) - Un framework responsivo basado en material design del que tomo alguna columna, color, etc
 -   Hice una carga condicional de componentes
 -   PropTypes - Valida los tipos de las props
 
